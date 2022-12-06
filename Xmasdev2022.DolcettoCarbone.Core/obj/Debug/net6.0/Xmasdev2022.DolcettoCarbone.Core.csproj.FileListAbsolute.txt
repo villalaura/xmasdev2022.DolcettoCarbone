@@ -1,0 +1,12 @@
+C:\dev\community\xmasdev2022.DolcettoCarbone\Xmasdev2022.DolcettoCarbone.Core\bin\Debug\net6.0\Xmasdev2022.DolcettoCarbone.Core.deps.json
+C:\dev\community\xmasdev2022.DolcettoCarbone\Xmasdev2022.DolcettoCarbone.Core\bin\Debug\net6.0\Xmasdev2022.DolcettoCarbone.Core.dll
+C:\dev\community\xmasdev2022.DolcettoCarbone\Xmasdev2022.DolcettoCarbone.Core\bin\Debug\net6.0\Xmasdev2022.DolcettoCarbone.Core.pdb
+C:\dev\community\xmasdev2022.DolcettoCarbone\Xmasdev2022.DolcettoCarbone.Core\obj\Debug\net6.0\Xmasdev2022.DolcettoCarbone.Core.csproj.AssemblyReference.cache
+C:\dev\community\xmasdev2022.DolcettoCarbone\Xmasdev2022.DolcettoCarbone.Core\obj\Debug\net6.0\Xmasdev2022.DolcettoCarbone.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev\community\xmasdev2022.DolcettoCarbone\Xmasdev2022.DolcettoCarbone.Core\obj\Debug\net6.0\Xmasdev2022.DolcettoCarbone.Core.AssemblyInfoInputs.cache
+C:\dev\community\xmasdev2022.DolcettoCarbone\Xmasdev2022.DolcettoCarbone.Core\obj\Debug\net6.0\Xmasdev2022.DolcettoCarbone.Core.AssemblyInfo.cs
+C:\dev\community\xmasdev2022.DolcettoCarbone\Xmasdev2022.DolcettoCarbone.Core\obj\Debug\net6.0\Xmasdev2022.DolcettoCarbone.Core.csproj.CoreCompileInputs.cache
+C:\dev\community\xmasdev2022.DolcettoCarbone\Xmasdev2022.DolcettoCarbone.Core\obj\Debug\net6.0\Xmasdev2022.DolcettoCarbone.Core.dll
+C:\dev\community\xmasdev2022.DolcettoCarbone\Xmasdev2022.DolcettoCarbone.Core\obj\Debug\net6.0\refint\Xmasdev2022.DolcettoCarbone.Core.dll
+C:\dev\community\xmasdev2022.DolcettoCarbone\Xmasdev2022.DolcettoCarbone.Core\obj\Debug\net6.0\Xmasdev2022.DolcettoCarbone.Core.pdb
+C:\dev\community\xmasdev2022.DolcettoCarbone\Xmasdev2022.DolcettoCarbone.Core\obj\Debug\net6.0\ref\Xmasdev2022.DolcettoCarbone.Core.dll
