@@ -49,6 +49,7 @@ static void TrainEvaluatePredict(ITrainerBase trainer, ModelInput newSample)
 
     trainer.Save();
 
+    //usi il modello nell'applicazione
     var predictor = new Predictor();
     var prediction = predictor.Predict(newSample);
     Console.WriteLine("------------------------------");

@@ -78,12 +78,19 @@ namespace Xmasdev2022.DolcettoCarbone.Common
         }
         private EstimatorChain<NormalizingTransformer> BuildDataProcessingPipeline()
         {
+            //concatena le feature interessanti per il modello
             var dataProcessPipeline = MlContext.Transforms.Concatenate("Features",
                                                nameof(ModelInput.Note),
                                                nameof(ModelInput.GiocattoliRotti),
                                                nameof(ModelInput.Parolacce),
                                                nameof(ModelInput.VisiteNonni)
                                                )
+
+                //esegue la normalizzazione dei dati, per portare i dati a una proporzione comune,
+                //visto che alcuni algoritmi sono più sensibili di altri
+                //come capisco se il trainer necessita normalizzazione? è descritto nella documentazione
+                //https://learn.microsoft.com/en-us/dotnet/api/microsoft.ml.trainers.sdcalogisticregressionbinarytrainer?view=ml-dotnet
+                //https://learn.microsoft.com/en-us/dotnet/machine-learning/resources/tasks
                .Append(MlContext.Transforms.NormalizeMinMax("NormalizedFeatures", "Features"))
                .AppendCacheCheckpoint(MlContext);
 
@@ -96,6 +103,7 @@ namespace Xmasdev2022.DolcettoCarbone.Common
                                     .LoadFromTextFile<ModelInput>
                                       (trainingFileName, hasHeader: true, separatorChar: ';');
             
+            //splitta il dataset in due parti: 70% training, 30% test che servirà per la valutazione del modello
             return MlContext.Data.TrainTestSplit(trainingDataView, testFraction: 0.3);
         }
     }
