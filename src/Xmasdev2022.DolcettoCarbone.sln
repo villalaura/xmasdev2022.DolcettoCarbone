@@ -5,9 +5,9 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xmasdev2022.DolcettoCarbone.Console", "Xmasdev2022.DolcettoCarbone.Console\Xmasdev2022.DolcettoCarbone.Console.csproj", "{495A55DB-B794-4A29-87CF-EB4F6E46E618}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xmasdev2022.DolcettoCarbone.Core", "..\Xmasdev2022.DolcettoCarbone.Core\Xmasdev2022.DolcettoCarbone.Core.csproj", "{8F81809D-538B-479F-B88B-3304E8AE83D5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xmasdev2022.DolcettoCarbone.Core", "Xmasdev2022.DolcettoCarbone.Core\Xmasdev2022.DolcettoCarbone.Core.csproj", "{8F81809D-538B-479F-B88B-3304E8AE83D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xmasdev2022.DolcettoCarbone.Web", "..\Xmasdev2022.DolcettoCarbone.Web\Xmasdev2022.DolcettoCarbone.Web.csproj", "{9D00E2D9-3775-4C91-8204-599FC680C1AE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xmasdev2022.DolcettoCarbone.Web", "Xmasdev2022.DolcettoCarbone.Web\Xmasdev2022.DolcettoCarbone.Web.csproj", "{9D00E2D9-3775-4C91-8204-599FC680C1AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
