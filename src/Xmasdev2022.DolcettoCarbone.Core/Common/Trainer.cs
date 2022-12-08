@@ -63,7 +63,7 @@ namespace Xmasdev2022.DolcettoCarbone.Common
             _trainedModel = trainingPipeline.Fit(_dataSplit.TrainSet);
 
             //debug normalized trainset
-            var x = _trainedModel.Transform(_dataSplit.TrainSet).Preview();
+            var dataDebuggerPreview = _trainedModel.Transform(_dataSplit.TrainSet).Preview();
         }
         public void Save()
         {

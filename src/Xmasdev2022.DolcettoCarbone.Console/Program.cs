@@ -36,8 +36,10 @@ static void TrainEvaluatePredict(ITrainerBase trainer, ModelInput newSample)
     Console.WriteLine("*******************************");
 
     string path = $"{Directory.GetCurrentDirectory()}\\Data\\befana.csv";
+    
+    //Fit with training data
     trainer.Fit(path);
-
+    //Evaluate
     var modelMetrics = trainer.Evaluate();
 
     Console.WriteLine($"Accuracy: {modelMetrics.Accuracy:0.##}{Environment.NewLine}" +
