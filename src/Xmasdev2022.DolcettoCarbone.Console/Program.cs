@@ -6,8 +6,6 @@ using Xmasdev2022.DolcettoCarbone.Trainers;
 
 //NormalizeMinMaxMulticolumn.Example();
 
-string path = @"C:\dev\community\xmasdev2022.DolcettoCarbone\Xmasdev2022.DolcettoCarbone.Console\Xmasdev2022.DolcettoCarbone.Console\Data\nnlist.csv";
-
 //Trainer trainer = new Trainer();
 var trainers = new List<ITrainerBase>
             {
@@ -37,7 +35,7 @@ static void TrainEvaluatePredict(ITrainerBase trainer, ModelInput newSample)
     Console.WriteLine($"{trainer.Name}");
     Console.WriteLine("*******************************");
 
-    string path = @"C:\dev\community\xmasdev2022.DolcettoCarbone\Xmasdev2022.DolcettoCarbone.Console\Xmasdev2022.DolcettoCarbone.Console\Data\befana.csv";
+    string path = $"{Directory.GetCurrentDirectory()}\\Data\\befana.csv";
     trainer.Fit(path);
 
     var modelMetrics = trainer.Evaluate();

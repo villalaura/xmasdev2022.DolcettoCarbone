@@ -11,4 +11,13 @@
     <ProjectReference Include="..\Xmasdev2022.DolcettoCarbone.Core\Xmasdev2022.DolcettoCarbone.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Data\befana.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\nnlist.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
