@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Xmasdev2022.DolcettoCarbone.Core\Xmasdev2022.DolcettoCarbone.Core.csproj" />
+    <ProjectReference Include="..\Xmasdev2022.DolcettoCarbone.Core\Xmasdev2022.DolcettoCarbone.Core.csproj" />
   </ItemGroup>
 
 </Project>
