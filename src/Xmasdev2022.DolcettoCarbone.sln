@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xmasdev2022.DolcettoCarbone.Console", "Xmasdev2022.DolcettoCarbone.Console\Xmasdev2022.DolcettoCarbone.Console.csproj", "{495A55DB-B794-4A29-87CF-EB4F6E46E618}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xmasdev2022.DolcettoCarbone.Core", "Xmasdev2022.DolcettoCarbone.Core\Xmasdev2022.DolcettoCarbone.Core.csproj", "{8F81809D-538B-479F-B88B-3304E8AE83D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Console", "Console", "{95D58933-5075-4025-AECE-AE897FAE5A96}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{0140B498-EC60-4B90-966B-8EEF9779D243}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xmasdev2022.DolcettoCarbone.Blazor", "Xmasdev2022.DolcettoCarbone.Blazor\Xmasdev2022.DolcettoCarbone.Blazor.csproj", "{C61437EE-E331-4DEA-8639-3D7A82BD6180}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xmasdev2022.DolcettoCarbone.Blazor.BusinessLayer", "Xmasdev2022.DolcettoCarbone.Blazor.BusinessLayer\Xmasdev2022.DolcettoCarbone.Blazor.BusinessLayer.csproj", "{F16DC2FC-C31C-4944-8BA6-442C60E433C0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{495A55DB-B794-4A29-87CF-EB4F6E46E618}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{495A55DB-B794-4A29-87CF-EB4F6E46E618}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{495A55DB-B794-4A29-87CF-EB4F6E46E618}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{495A55DB-B794-4A29-87CF-EB4F6E46E618}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F81809D-538B-479F-B88B-3304E8AE83D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F81809D-538B-479F-B88B-3304E8AE83D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F81809D-538B-479F-B88B-3304E8AE83D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F81809D-538B-479F-B88B-3304E8AE83D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C61437EE-E331-4DEA-8639-3D7A82BD6180}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C61437EE-E331-4DEA-8639-3D7A82BD6180}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C61437EE-E331-4DEA-8639-3D7A82BD6180}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C61437EE-E331-4DEA-8639-3D7A82BD6180}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F16DC2FC-C31C-4944-8BA6-442C60E433C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F16DC2FC-C31C-4944-8BA6-442C60E433C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F16DC2FC-C31C-4944-8BA6-442C60E433C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F16DC2FC-C31C-4944-8BA6-442C60E433C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{495A55DB-B794-4A29-87CF-EB4F6E46E618} = {95D58933-5075-4025-AECE-AE897FAE5A96}
+		{C61437EE-E331-4DEA-8639-3D7A82BD6180} = {0140B498-EC60-4B90-966B-8EEF9779D243}
+		{F16DC2FC-C31C-4944-8BA6-442C60E433C0} = {0140B498-EC60-4B90-966B-8EEF9779D243}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {75E82A72-7576-40F4-9E4F-1DA3B0E197FC}
+	EndGlobalSection
+EndGlobal
