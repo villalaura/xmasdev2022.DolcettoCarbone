@@ -43,9 +43,10 @@ static void TrainEvaluatePredict(ITrainerBase trainer, ModelInput newSample)
     var modelMetrics = trainer.Evaluate();
 
     Console.WriteLine($"Accuracy: {modelMetrics.Accuracy:0.##}{Environment.NewLine}" +
+                      $"Precision: {modelMetrics.PositivePrecision:#.##}{Environment.NewLine}" +
+                      $"Recall: {modelMetrics.PositiveRecall:#.##}{Environment.NewLine}" +
                       $"F1 Score: {modelMetrics.F1Score:#.##}{Environment.NewLine}" +
-                      $"Area Under Roc Curve: {modelMetrics.AreaUnderRocCurve:#.##}{Environment.NewLine}" +
-                      $"Area Under Precision Recall Curve: {modelMetrics.AreaUnderPrecisionRecallCurve:#.##}{Environment.NewLine}");
+                      $"Area Under Roc Curve: {modelMetrics.AreaUnderRocCurve:#.##}{Environment.NewLine}");
 
     trainer.Save();
 
