@@ -1,0 +1,76 @@
+﻿@page "/"
+
+<PageTitle>XMas DEV 2022</PageTitle>
+
+@using Xmasdev2022.DolcettoCarbone.Models
+@inject ILogger<DolcettoCarbone.Blazor.Pages.Index> Logger
+@inject Xmasdev2022.DolcettoCarbone.Blazor.BusinessLayer.Services.IDolcettoCarboneService dolcettoCarboneService
+<h1>XMas DEV 2022 - Dolcetto e Carbone?</h1>
+
+<p>Welcome to our ML.NET powered system.</p>
+
+<hr/>
+
+<EditForm EditContext="@editContext"  OnSubmit="@HandleSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    
+    <p>
+        <label for="note">Note:</label>
+        <InputNumber id="note" @bind-Value="modelInput.Note" />
+    </p>
+    <p>
+        <label for="giocattoliRotti">Giocattoli Rotti:</label>
+        <InputNumber id="giocattoliRotti" @bind-Value="modelInput.GiocattoliRotti" />
+    </p>
+    <p>
+        <label for="parolacce">Parolacce:</label>
+        <InputNumber id="parolacce" @bind-Value="modelInput.Parolacce" />
+    </p>
+    <p>
+        <label for="visiteNonni">Visite Nonni:</label>
+        <InputNumber id="visiteNonni" @bind-Value="modelInput.VisiteNonni" />
+    </p>
+    <p>
+        <label for="mediaVoti">Media Voti:</label>
+        <InputNumber id="mediaVoti" @bind-Value="modelInput.MediaVoti" />
+    </p>
+
+    <button type="submit" class="btn-primary">Calcola!</button>
+</EditForm>
+
+@if (imageSource != null)
+{
+    <p>
+        <img src="@imageSource" />
+    </p>
+}
+
+@code {
+    private ModelInput modelInput = new();
+    private string? imageSource;
+    private EditContext? editContext;
+
+    protected override void OnInitialized()
+    {
+        editContext = new(modelInput);
+    }
+
+    private async Task HandleSubmit()
+    {
+        if (editContext != null && editContext.Validate())
+        {
+            Logger.LogInformation("HandleSubmit called: Form is valid");
+
+            imageSource = "/img/calzecondolci.jpg";
+
+            // Process the valid form
+            // await ...
+            await Task.CompletedTask;
+        }
+        else
+        {
+            Logger.LogInformation("HandleSubmit called: Form is INVALID");
+        }
+    }
+}
