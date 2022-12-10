@@ -39,17 +39,29 @@
     <button type="submit" class="btn-primary">Calcola!</button>
 </EditForm>
 
-@if (imageSource != null)
+<hr/>
+
+@if (imageSource != null && modelOutput != null)
 {
     <p>
         <img src="@imageSource" />
+    </p>
+    <p>
+        <span>Score: </span>
+        <span>@modelOutput.Score</span>
+    </p>
+    <p>
+        <span>Probability: </span>
+        <span>@modelOutput.Probability</span>
     </p>
 }
 
 @code {
     private ModelInput modelInput = new();
+    private ModelOutput? modelOutput;
     private string? imageSource;
     private EditContext? editContext;
+    private string filePath = $"{Directory.GetCurrentDirectory()}\\wwwroot\\models\\classification.mdl";
 
     protected override void OnInitialized()
     {
@@ -62,11 +74,12 @@
         {
             Logger.LogInformation("HandleSubmit called: Form is valid");
 
-            imageSource = "/img/calzecondolci.jpg";
+            modelOutput = await dolcettoCarboneService.PredictAsync(filePath, modelInput);
 
-            // Process the valid form
-            // await ...
-            await Task.CompletedTask;
+            if (modelOutput.PredictedLabel)
+                imageSource = "/img/calzecondolci.jpg";
+            else
+                imageSource = "/img/calzeconcarbone.jpg";
         }
         else
         {

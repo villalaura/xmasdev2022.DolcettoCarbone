@@ -12,6 +12,6 @@ namespace Xmasdev2022.DolcettoCarbone.Models
         string Name { get; }
         void Fit(string trainingFileName);
         BinaryClassificationMetrics Evaluate();
-        void Save();
+        void Save(string path);
     }
 }

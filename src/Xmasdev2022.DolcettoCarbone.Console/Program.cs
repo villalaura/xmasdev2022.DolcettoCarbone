@@ -35,7 +35,9 @@ static void TrainEvaluatePredict(ITrainerBase trainer, ModelInput newSample)
     Console.WriteLine($"{trainer.Name}");
     Console.WriteLine("*******************************");
 
-    string path = $"{Directory.GetCurrentDirectory()}\\Data\\befana.csv";
+    string basePath = $"{Directory.GetCurrentDirectory()}\\Data";
+
+    string path = $"{basePath}\\befana.csv";
     
     //Fit with training data
     trainer.Fit(path);
@@ -48,11 +50,12 @@ static void TrainEvaluatePredict(ITrainerBase trainer, ModelInput newSample)
                       $"F1 Score: {modelMetrics.F1Score:#.##}{Environment.NewLine}" +
                       $"Area Under Roc Curve: {modelMetrics.AreaUnderRocCurve:#.##}{Environment.NewLine}");
 
-    trainer.Save();
+    trainer.Save(basePath);
 
     //usi il modello nell'applicazione
     var predictor = new Predictor();
-    var prediction = predictor.Predict(newSample);
+    string filePath = $"{basePath}\\classification.mdl";
+    var prediction = predictor.Predict(filePath, newSample);
     Console.WriteLine("------------------------------");
     Console.WriteLine($"Prediction: {prediction.PredictedLabel:#.##}");
     Console.WriteLine("------------------------------");

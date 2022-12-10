@@ -19,10 +19,7 @@ namespace Xmasdev2022.DolcettoCarbone.Common
         protected DataOperationsCatalog.TrainTestData _dataSplit;
 
         protected ITransformer _trainedModel;
-         protected ITrainerEstimator<BinaryPredictionTransformer<TParameters>, TParameters> _model;
-
-        protected static string ModelPath => Path
-                  .Combine(AppContext.BaseDirectory, "classification.mdl");
+        protected ITrainerEstimator<BinaryPredictionTransformer<TParameters>, TParameters> _model;
 
         public string Name { get; protected set; }
 
@@ -65,10 +62,12 @@ namespace Xmasdev2022.DolcettoCarbone.Common
             //debug normalized trainset
             var dataDebuggerPreview = _trainedModel.Transform(_dataSplit.TrainSet).Preview();
         }
-        public void Save()
+        public void Save(string path)
         {
-            MlContext.Model.Save(_trainedModel, _dataSplit.TrainSet.Schema, ModelPath);
+            var filePath = Path.Combine(path, "classification.mdl");
+            MlContext.Model.Save(_trainedModel, _dataSplit.TrainSet.Schema, filePath);
         }
+        
         public BinaryClassificationMetrics Evaluate()
         {
             var testSetTransform = _trainedModel.Transform(_dataSplit.TestSet);
@@ -76,6 +75,7 @@ namespace Xmasdev2022.DolcettoCarbone.Common
 
             return MlContext.BinaryClassification.EvaluateNonCalibrated(testSetTransform);
         }
+        
         private EstimatorChain<NormalizingTransformer> BuildDataProcessingPipeline()
         {
             //concatena le feature interessanti per il modello

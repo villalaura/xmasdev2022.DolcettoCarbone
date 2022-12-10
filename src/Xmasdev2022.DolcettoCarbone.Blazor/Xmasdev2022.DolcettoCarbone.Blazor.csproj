@@ -10,4 +10,10 @@
     <ProjectReference Include="..\Xmasdev2022.DolcettoCarbone.Blazor.BusinessLayer\Xmasdev2022.DolcettoCarbone.Blazor.BusinessLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\models\classification.mdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

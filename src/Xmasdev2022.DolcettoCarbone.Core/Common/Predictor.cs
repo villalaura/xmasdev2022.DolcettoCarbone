@@ -1,6 +1,7 @@
 ﻿using Microsoft.ML;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,6 @@ namespace Xmasdev2022.DolcettoCarbone.Common
     
     public class Predictor
     {
-        protected static string ModelPath => Path.Combine(AppContext.BaseDirectory, "classification.mdl");
         private readonly MLContext _mlContext;
 
         private ITransformer _model;
@@ -21,22 +21,22 @@ namespace Xmasdev2022.DolcettoCarbone.Common
         {
             _mlContext = new MLContext();
         }
-        public ModelOutput Predict(ModelInput newSample)
+        public ModelOutput Predict(string filePath, ModelInput newSample)
         {
-            LoadModel();
+            LoadModel(filePath);
 
             var predictionEngine = _mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(_model);
             
             return predictionEngine.Predict(newSample);
         }
-        private void LoadModel()
+        private void LoadModel(string filePath)
         {
-            if (!File.Exists(ModelPath))
+            if (!File.Exists(filePath))
             {
-                throw new FileNotFoundException($"File {ModelPath} doesn't exist.");
+                throw new FileNotFoundException($"File {filePath} doesn't exist.");
             }
 
-            using (var stream = new FileStream(ModelPath, FileMode.Open, FileAccess.Read, FileShare.Read))
+            using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
                 _model = _mlContext.Model.Load(stream, out _);
             }
