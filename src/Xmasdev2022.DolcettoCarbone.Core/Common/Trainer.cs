@@ -41,20 +41,7 @@ namespace Xmasdev2022.DolcettoCarbone.Common
             //build Data Processing Pipeline
             var dataProcessPipeline = BuildDataProcessingPipeline();
 
-
-            ////set LbfgsLogisticRegressionBinaryTrainer with options
-            //var options = new LbfgsLogisticRegressionBinaryTrainer.Options()
-            //{
-            //    MaximumNumberOfIterations = 100,
-            //    OptimizationTolerance = 1e-8f,
-            //    L2Regularization = 0.01f
-            //};
-
-            //append trainer to processing pipeline
-            //var trainingPipeline = dataProcessPipeline
-            //    .Append(MlContext.BinaryClassification.Trainers.LbfgsLogisticRegression(labelColumnName: "Label", featureColumnName: "NormalizedFeatures"));
-            
-             var trainingPipeline = dataProcessPipeline.Append(_model);
+            var trainingPipeline = dataProcessPipeline.Append(_model);
 
             //train model
             _trainedModel = trainingPipeline.Fit(_dataSplit.TrainSet);

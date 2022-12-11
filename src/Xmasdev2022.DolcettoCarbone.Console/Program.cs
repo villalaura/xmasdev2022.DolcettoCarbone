@@ -45,10 +45,12 @@ static void TrainEvaluatePredict(ITrainerBase trainer, ModelInput newSample)
     var modelMetrics = trainer.Evaluate();
 
     Console.WriteLine($"Accuracy: {modelMetrics.Accuracy:0.##}{Environment.NewLine}" +
-                      $"Precision: {modelMetrics.PositivePrecision:#.##}{Environment.NewLine}" +
-                      $"Recall: {modelMetrics.PositiveRecall:#.##}{Environment.NewLine}" +
+                      $"Positive Precision: {modelMetrics.PositivePrecision:#.##}{Environment.NewLine}" +
+                      $"Positive Recall: {modelMetrics.PositiveRecall:#.##}{Environment.NewLine}" +
                       $"F1 Score: {modelMetrics.F1Score:#.##}{Environment.NewLine}" +
                       $"Area Under Roc Curve: {modelMetrics.AreaUnderRocCurve:#.##}{Environment.NewLine}");
+
+    Console.WriteLine($"{modelMetrics.ConfusionMatrix.GetFormattedConfusionTable()}");
 
     trainer.Save(basePath);
 
@@ -61,39 +63,3 @@ static void TrainEvaluatePredict(ITrainerBase trainer, ModelInput newSample)
     Console.WriteLine("------------------------------");
 }
 
-//trainer.Fit(path);
-
-//var modelMetrics = trainer.Evaluate();
-
-//Console.WriteLine($"Accuracy: {modelMetrics.Accuracy:0.##}{Environment.NewLine}" +
-//                  $"F1 Score: {modelMetrics.F1Score:#.##}{Environment.NewLine}" +
-//                  $"Area under the Curve: {modelMetrics.AreaUnderRocCurve:#.##}{Environment.NewLine}" +
-//                  $"Area Under Precision Recall Curve: {modelMetrics.AreaUnderPrecisionRecallCurve:#.##}{Environment.NewLine}");
-
-
-//trainer.Save();
-
-//Predictor predictor = new Predictor();
-////ModelOutput result = predictor.Predict(
-////    new Xmasdev2022.DolcettoCarbone.Models.ModelInput()
-////    {
-////        GiocattoliRotti = 10,
-////        MediaVoti = 2,
-////        Note = 20,
-////        Parolacce = 30,
-////        VisiteNonni = 2
-////    }
-////    );
-
-//ModelOutput result = predictor.Predict(
-//    new Xmasdev2022.DolcettoCarbone.Models.ModelInput()
-//    {
-//        GiocattoliRotti = 1,
-//        MediaVoti = 8,
-//        Note = 1,
-//        Parolacce = 2,
-//        VisiteNonni = 12
-//    }
-//    );
-
-//Console.WriteLine("Predicted: " + result.PredictedLabel + " Probability: " + result.Probability.ToString());
