@@ -83,7 +83,8 @@ namespace Xmasdev2022.DolcettoCarbone.Common
                                                nameof(ModelInput.Note),
                                                nameof(ModelInput.GiocattoliRotti),
                                                nameof(ModelInput.Parolacce),
-                                               nameof(ModelInput.VisiteNonni)
+                                               nameof(ModelInput.VisiteNonni),
+                                               nameof(ModelInput.MediaVoti)
                                                )
 
                 //esegue la normalizzazione dei dati, per portare i dati a una proporzione comune,
