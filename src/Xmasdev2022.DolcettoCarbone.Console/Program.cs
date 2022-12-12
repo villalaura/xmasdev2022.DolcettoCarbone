@@ -1,24 +1,20 @@
-﻿// See https://aka.ms/new-console-template for more information
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
 using Xmasdev2022.DolcettoCarbone.Common;
 using Xmasdev2022.DolcettoCarbone.Models;
 using Xmasdev2022.DolcettoCarbone.Trainers;
 
-//NormalizeMinMaxMulticolumn.Example();
-
-//Trainer trainer = new Trainer();
 var trainers = new List<ITrainerBase>
             {
+                new SdcaLogisticRegressionTrainer(),
                 new LbfgsLogisticRegressionTrainer(),
                 //new AveragedPerceptronTrainer(),
                 //new PriorTrainer(),
-                new SdcaLogisticRegressionTrainer()
                 //new SdcaNonCalibratedTrainer(),
                 //new SgdCalibratedTrainer(),
                 //new SgdNonCalibratedTrainer()
             };
 
-var newSample = new Xmasdev2022.DolcettoCarbone.Models.ModelInput()
+var newSample = new ModelInput()
 {
     GiocattoliRotti = 12,
     MediaVoti = 4,
@@ -36,14 +32,13 @@ static void TrainEvaluatePredict(ITrainerBase trainer, ModelInput newSample)
     Console.WriteLine("*******************************");
 
     string basePath = $"{Directory.GetCurrentDirectory()}\\Data";
-
     string path = $"{basePath}\\befana.csv";
     
     //Fit with training data
     trainer.Fit(path);
+
     //Evaluate
     var modelMetrics = trainer.Evaluate();
-
     Console.WriteLine($"Accuracy: {modelMetrics.Accuracy:0.##}{Environment.NewLine}" +
                       $"Positive Precision: {modelMetrics.PositivePrecision:#.##}{Environment.NewLine}" +
                       $"Positive Recall: {modelMetrics.PositiveRecall:#.##}{Environment.NewLine}" +

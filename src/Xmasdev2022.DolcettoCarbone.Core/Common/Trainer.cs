@@ -41,28 +41,25 @@ namespace Xmasdev2022.DolcettoCarbone.Common
             //build Data Processing Pipeline
             var dataProcessPipeline = BuildDataProcessingPipeline();
 
+            //append Trainer to the pipeline
             var trainingPipeline = dataProcessPipeline.Append(_model);
 
-            //train model
+            //train model with TrainSet (70%) - data still in memory
             _trainedModel = trainingPipeline.Fit(_dataSplit.TrainSet);
 
-            //debug normalized trainset
+            //debug it to see normalized trainset
             var dataDebuggerPreview = _trainedModel.Transform(_dataSplit.TrainSet).Preview();
         }
-        public void Save(string path)
+        private DataOperationsCatalog.TrainTestData LoadAndPrepareData(string trainingFileName)
         {
-            var filePath = Path.Combine(path, "classification.mdl");
-            MlContext.Model.Save(_trainedModel, _dataSplit.TrainSet.Schema, filePath);
-        }
-        
-        public BinaryClassificationMetrics Evaluate()
-        {
-            var testSetTransform = _trainedModel.Transform(_dataSplit.TestSet);
-            var tested = testSetTransform.Preview();
+            var trainingDataView = MlContext.Data
+                                    .LoadFromTextFile<ModelInput>
+                                      (trainingFileName, hasHeader: true, separatorChar: ';');
 
-            return MlContext.BinaryClassification.EvaluateNonCalibrated(testSetTransform);
+            //splitta il dataset in due parti: 70% training, 30% test che servirà per la valutazione del modello
+            return MlContext.Data.TrainTestSplit(trainingDataView, testFraction: 0.3);
         }
-        
+
         private EstimatorChain<NormalizingTransformer> BuildDataProcessingPipeline()
         {
             //concatena le feature interessanti per il modello
@@ -74,25 +71,31 @@ namespace Xmasdev2022.DolcettoCarbone.Common
                                                nameof(ModelInput.MediaVoti)
                                                )
 
-                //esegue la normalizzazione dei dati, per portare i dati a una proporzione comune,
-                //visto che alcuni algoritmi sono più sensibili di altri
-                //come capisco se il trainer necessita normalizzazione? è descritto nella documentazione
-                //https://learn.microsoft.com/en-us/dotnet/api/microsoft.ml.trainers.sdcalogisticregressionbinarytrainer?view=ml-dotnet
-                //https://learn.microsoft.com/en-us/dotnet/machine-learning/resources/tasks
+               //esegue la normalizzazione dei dati, per portare i dati a una proporzione comune,
+               //visto che alcuni algoritmi sono più sensibili di altri
+
+               //come capisco se il trainer necessita normalizzazione? è descritto nella documentazione
+               //https://learn.microsoft.com/en-us/dotnet/api/microsoft.ml.trainers.sdcalogisticregressionbinarytrainer?view=ml-dotnet
+               //https://learn.microsoft.com/en-us/dotnet/machine-learning/resources/tasks
+
                .Append(MlContext.Transforms.NormalizeMinMax("NormalizedFeatures", "Features"))
                .AppendCacheCheckpoint(MlContext);
 
             return dataProcessPipeline;
         }
 
-        private DataOperationsCatalog.TrainTestData LoadAndPrepareData(string trainingFileName)
+        public BinaryClassificationMetrics Evaluate()
         {
-            var trainingDataView = MlContext.Data
-                                    .LoadFromTextFile<ModelInput>
-                                      (trainingFileName, hasHeader: true, separatorChar: ';');
-            
-            //splitta il dataset in due parti: 70% training, 30% test che servirà per la valutazione del modello
-            return MlContext.Data.TrainTestSplit(trainingDataView, testFraction: 0.3);
+            var testSetTransform = _trainedModel.Transform(_dataSplit.TestSet);
+            var tested = testSetTransform.Preview();
+
+            return MlContext.BinaryClassification.EvaluateNonCalibrated(testSetTransform);
+        }
+
+        public void Save(string path)
+        {
+            var filePath = Path.Combine(path, "classification.mdl");
+            MlContext.Model.Save(_trainedModel, _dataSplit.TrainSet.Schema, filePath);
         }
     }
 }
