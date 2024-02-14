@@ -1,0 +1,9 @@
+{
+	"name": "df-illimity",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "26aa51b9-f738-48a7-9676-9c99d1a9f0d5",
+		"tenantId": "af415d2d-5838-4f48-98db-60f5663221e9"
+	}
+}
